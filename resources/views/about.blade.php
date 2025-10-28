@@ -27,7 +27,7 @@
 
         <!-- Experience -->
         <div class="bg-white rounded-lg shadow-lg p-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Pengalaman Kerja</h3>
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Experience</h3>
             <div class="space-y-6">
                 @foreach($about['experience'] as $exp)
                 <div class="border-l-4 border-primary pl-6 py-2">
