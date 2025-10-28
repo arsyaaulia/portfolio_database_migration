@@ -15,11 +15,11 @@
             <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="bg-primary text-blue-600 px-3 py-1 rounded-full text-sm">{{ $post['category'] }}</span>
-                        <span class="text-gray-500 text-sm">{{ $post['date'] }}</span>
+                        <span class="bg-primary text-blue-600 px-3 py-1 rounded-full text-sm">{{ $post->category }}</span>
+                        <span class="text-gray-500 text-sm">{{ $post->published_at->format('d M Y') }}</span>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ $post['title'] }}</h2>
-                    <p class="text-gray-600 mb-4">{{ $post['excerpt'] }}</p>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ $post->title }}</h2>
+                    <p class="text-gray-600 mb-4">{{ $post->excerpt }}</p>
                     <a href="#" class="text-primary font-semibold hover:text-blue-600 transition duration-300">
                         Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
                     </a>

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
+use App\Models\Experience;
+use App\Models\BlogPost;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -10,19 +14,8 @@ class PortfolioController extends Controller
     {
         $data = [
             'title' => 'Home - Portfolio Saya',
-            'skills' => ['Laravel', 'PHP', 'JavaScript', 'Vue.js', 'MySQL', 'Tailwind CSS'],
-            'projects' => [
-                [
-                    'name' => 'E-Commerce Website',
-                    'description' => 'Website e-commerce dengan fitur lengkap',
-                    'tech' => ['Laravel', 'Vue.js', 'MySQL']
-                ],
-                [
-                    'name' => 'Sistem Manajemen',
-                    'description' => 'Sistem manajemen untuk perusahaan',
-                    'tech' => ['Laravel', 'Bootstrap', 'jQuery']
-                ]
-            ]
+            'skills' => Skill::all(),
+            'projects' => Project::all(),
         ];
         return view('home', $data);
     }
@@ -30,16 +23,13 @@ class PortfolioController extends Controller
     public function about()
     {
         $data = [
-            'title' => 'Tentang Saya',
+            'title' => 'About Me',
             'about' => [
                 'nama' => 'Arsya Aulia Amira',
                 'profesi' => 'Full Stack Developer',
-                'deskripsi' => "Hi! I'm Arsya Aulia Amira, a 19-year-old informatics student currently learning and exploring fullstack development. I only began coding in college, so I'm still navigating through trials, errors, and plenty of learning moments. I'm passionate about creating web applications that are not only functional but also visually appealing. My goal is to continuously improve my skills and contribute to exciting projects in the tech world.",
-                'experience' => [
-                    ['tahun' => '2022-Sekarang', 'posisi' => 'Senior Developer', 'perusahaan' => 'Tech Company'],
-                    ['tahun' => '2020-2022', 'posisi' => 'Web Developer', 'perusahaan' => 'Startup XYZ']
-                ]
-            ]
+                'deskripsi' => 'Saya adalah seorang developer yang passionate dalam membuat aplikasi web yang indah dan functional.',
+            ],
+            'experiences' => Experience::orderBy('created_at', 'desc')->get()
         ];
         return view('about', $data);
     }
@@ -48,20 +38,7 @@ class PortfolioController extends Controller
     {
         $data = [
             'title' => 'Blog - Pemikiran & Tutorial',
-            'posts' => [
-                [
-                    'title' => 'Belajar Laravel 10 dari Dasar',
-                    'excerpt' => 'Tutorial lengkap belajar Laravel 10 untuk pemula...',
-                    'date' => '15 Jan 2024',
-                    'category' => 'Tutorial'
-                ],
-                [
-                    'title' => 'Tips Clean Code di PHP',
-                    'excerpt' => 'Bagaimana menulis kode PHP yang clean dan maintainable...',
-                    'date' => '10 Jan 2024',
-                    'category' => 'Tips'
-                ]
-            ]
+            'posts' => BlogPost::orderBy('published_at', 'desc')->get()
         ];
         return view('blog', $data);
     }
@@ -71,8 +48,8 @@ class PortfolioController extends Controller
         $data = [
             'title' => 'Hubungi Saya',
             'contact_info' => [
-                'email' => 'email@domain.com',
-                'phone' => '+62 821-8961-5669',
+                'email' => 'arsya1522@gmail.com',
+                'phone' => '+62 xxxx-xxxx-xxxx',
                 'location' => 'Makassar, Indonesia'
             ]
         ];

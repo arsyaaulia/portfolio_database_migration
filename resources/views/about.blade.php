@@ -25,21 +25,25 @@
             </div>
         </div>
 
-        <!-- Experience -->
         <div class="bg-white rounded-lg shadow-lg p-8">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">Experience</h3>
-            <div class="space-y-6">
-                @foreach($about['experience'] as $exp)
-                <div class="border-l-4 border-primary pl-6 py-2">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="text-lg font-semibold text-gray-800">{{ $exp['posisi'] }}</h4>
-                        <span class="bg-primary text-blue-600 px-3 py-1 rounded-full text-sm">{{ $exp['tahun'] }}</span>
-                    </div>
-                    <p class="text-gray-600 font-medium">{{ $exp['perusahaan'] }}</p>
+
+            @foreach($experiences as $exp)
+            <div class="border-l-4 border-primary pl-6 py-2">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-lg font-semibold text-gray-800">{{ $exp->position }}</h4>
+                    <span class="bg-primary text-blue-600 px-3 py-1 rounded-full text-sm">{{ $exp->year }}</span>
                 </div>
-                @endforeach
+                <p class="text-gray-600 font-medium">{{ $exp->company }}</p>
+                @if($exp->description)
+                <p class="text-gray-600 mt-2">{{ $exp->description }}</p>
+                @endif
             </div>
+            @endforeach
+
         </div>
+        <!-- Experience -->
+        
     </div>
 </section>
 @endsection
