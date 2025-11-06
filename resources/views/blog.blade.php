@@ -18,11 +18,25 @@
                         <span class="bg-primary text-blue-600 px-3 py-1 rounded-full text-sm">{{ $post->category }}</span>
                         <span class="text-gray-500 text-sm">{{ $post->published_at->format('d M Y') }}</span>
                     </div>
+                    
                     <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ $post->title }}</h2>
+                    
+                    <!-- Tampilkan author dari relationship -->
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-user mr-1"></i>By: {{ $post->user->name }}
+                    </p>
+                    
                     <p class="text-gray-600 mb-4">{{ $post->excerpt }}</p>
-                    <a href="#" class="text-primary font-semibold hover:text-blue-600 transition duration-300">
-                        Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    
+                    <!-- Tampilkan jumlah comments -->
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-primary font-semibold hover:text-blue-600 transition duration-300">
+                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm">
+                            <i class="fas fa-comment mr-1"></i>{{ $post->comments->count() }} Comments
+                        </span>
+                    </div>
                 </div>
             </article>
             @endforeach
