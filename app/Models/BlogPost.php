@@ -9,6 +9,8 @@ class BlogPost extends Model
 {
     use HasFactory;
 
+    protected $table = 'blogs';
+
     protected $fillable = ['title', 'excerpt', 'content', 'category', 'published_at', 'user_id'];
     
     protected $casts = [
@@ -21,9 +23,10 @@ class BlogPost extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Relationship: BlogPost hasMany Comments
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'blog_post_id');
     }
 }
 

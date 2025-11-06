@@ -16,8 +16,8 @@ class PortfolioSeeder extends Seeder
     {
         // 1. Create Users
         $user = User::factory()->create([
-            'name' => 'John Doe',
-            'email' => 'john@example.com'
+            'name' => 'Arsya Aulia Amira',
+            'email' => 'asya@example.com'
         ]);
 
         // 2. Create Skills
@@ -27,13 +27,13 @@ class PortfolioSeeder extends Seeder
         Experience::factory()->count(3)->create();
         
         // 4. Create Blog Posts dengan relationship ke User
-        $blogPosts = BlogPost::factory()->count(6)->create([
+        BlogPost::factory()->count(6)->create([
             'user_id' => $user->id
         ]);
         
         // 5. Create Comments dengan relationship ke Blog Posts
         foreach ($blogPosts as $post) {
-            Comment::factory()->count(3)->create([
+            \App\Models\Comment::factory()->count(2)->create([
                 'blog_post_id' => $post->id
             ]);
         }
