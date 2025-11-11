@@ -9,7 +9,7 @@ class BlogPost extends Model
 {
     use HasFactory;
 
-    protected $table = 'blogs';
+    protected $table = 'blogs_posts';
 
     protected $fillable = ['title', 'excerpt', 'content', 'category', 'published_at', 'user_id'];
     
