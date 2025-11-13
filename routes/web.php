@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PortfolioController::class, 'home'])->name('home');
-Route::get('/about', [PortfolioController::class, 'about'])->name('about');
-Route::get('/blog', [PortfolioController::class, 'blog'])->name('blog');
-Route::get('/contact', [PortfolioController::class, 'contact'])->name('contact');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+// Routes dengan controller terpisah
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+// Admin route (jika masih perlu)
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
